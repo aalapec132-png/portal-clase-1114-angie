@@ -131,9 +131,25 @@ Edad: 25
 ## Preguntas de reflexion
 
 1. ¿Cual es la diferencia entre escribir datos en HTML vs guardarlos en variables Python?
+
+respuesta:
+Con variables Pyhton puedes cambiar datos sin editar todo el HTML.
+
 2. Si el profesor cambia mañana, ¿cuantos archivos necesitas editar con este enfoque?
+
+respuesta:
+Solo necesitas cxambiar app.py
+
 3. ¿Que ventaja tiene usar `{{ }}` en lugar de escribir texto fijo?
+
+respuesta:
+{{}} permite mostrar datos dinamicos enviados desde Flask
+
 4. ¿Donde se ejecuta Jinja2: en la computadora del usuario o en el servidor?
+
+respuesta:
+
+Jinja2 se ejecuta en el servidor Flask
 
 ## Entregable
 
