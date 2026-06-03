@@ -4,22 +4,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def inicio():
+    return render_template("index.html")
 
- nombre_profesor = "Prof. Henry - Kyrbot Innovations" 
- email = "henry@kyrbot.com" 
- horario = "Lunes a Viernes - 7:00 PM"
- aula = "Aula Virtual Flask 1114"
- descripcion = "Portal de aprendizaje Flask con Python y HTML"
+@app.route("/informacion")
+def informacion():
+    return render_template("informacion.html")
 
+@app.route("/recursos")
+def recursos():
+    return render_template("recursos.html")
 
- return render_template( 
-"index.html",
- nombre_profesor=nombre_profesor,
-email=email, 
-horario=horario,
-aula=aula,
-descripcion=descripcion
-)
+@app.route("/tareas")
+def tareas():
+    return render_template("tareas.html")
 
-if __name__ == "__main__": 
-   app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
+    0

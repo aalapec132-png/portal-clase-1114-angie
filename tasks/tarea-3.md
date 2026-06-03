@@ -205,8 +205,22 @@ def nombre_funcion():  # Que ocurre
 ## Preguntas de reflexion
 
 1. Si tienes 10 paginas diferentes, ¿cuantas funciones necesitas en app.py?
+
+respuesta
+necesito 10 funciones, una para cada ruta o pagina del sitio web
+
+
 2. ¿Que pasa si cambias el nombre de una ruta pero no actualizas los links?
+
+respuesta:
+
+Los en laces dejaran de funcionar y aparecera un error 404 porque los links apuntaran a una ruta que ya no existe.
+
 3. ¿Por que es importante tener un menu consistente en todas las paginas?
+
+respuesta
+
+Porque facilita la navegacion del usuario, permite acceder rapidamente a cualquier seccion y hace que el sitio web sea más organizada y facil de usar.
 
 ## Entregable
 
