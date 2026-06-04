@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -45,6 +45,25 @@ def tareas_pagina():
     return render_template(
         "tareas.html",
         tareas=tareas
+    )
+
+@app.route("/inscripcion", methods=["GET", "POST"])
+def inscripcion():
+    mensaje = None
+
+    if request.method == "POST":
+        nombre = request.form.get("nombre")
+        email = request.form.get("email")
+        programa = request.form.get("programa")
+
+        if nombre and email and programa:
+            mensaje = f"Bienvenido {nombre}! Te hemos registrado."
+        else:
+            mensaje = "Por favor completa todos los campos."
+
+    return render_template(
+        "inscripcion.html",
+        mensaje=mensaje
     )
 
 if __name__ == "__main__":
