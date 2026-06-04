@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Información</title>
+    <title>Recursos</title>
 </head>
-<body>
 
-    <h1>Información del Curso</h1>
+    <body>
 
-    <p>Esta página contiene información general del portal.</p>
+    <h1>Tareas</h1>
 
-    <a href="/">Inicio</a>
-    <a href="/informacion">Recursos</a>
-    <a href="/tareas">Tareas</a>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/informacion">Información</a>
+        <a href="/tareas">Tareas</a>
+       
+    </nav>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Título</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td>{{ tarea.numero }}</td>
+                <td>{{ tarea.titulo }}</td>
+                <td>{{ tarea.fecha }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </body>
+
 </html>

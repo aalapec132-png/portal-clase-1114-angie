@@ -9,9 +9,32 @@
 
     <p>Esta página contiene información general del portal.</p>
 
+<table border="1">
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Titulo</th>
+            <th>Fecha entrega</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tarea in tareas %}
+        <tr>
+            <td>{{ tarea.numero }}</td>
+            <td>{{ tarea.titulo }}</td>
+            <td>{{ tarea.fecha }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
     <a href="/">Inicio</a>
     <a href="/recursos">Recursos</a>
     <a href="/informacion">Información</a>
 
 </body>
+
+
+
 </html>

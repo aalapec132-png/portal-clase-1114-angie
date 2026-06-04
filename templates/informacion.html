@@ -5,13 +5,22 @@
 </head>
 <body>
 
-    <h1>Información del Curso</h1>
+    <h1>Información</h1>
 
-    <p>Esta página contiene información general del portal.</p>
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/recursos">Recursos</a>
+        <a href="/tareas">Tareas</a>
+    </nav>
 
-    <a href="/">Inicio</a>
-    <a href="/recursos">Recursos</a>
-    <a href="/tareas">Tareas</a>
+    <hr>
+
+    <h2>Objetivos de la clase</h2>
+
+    <ul>
+        {% for objetivo in objetivos %}
+        <li>{{ objetivo }}</li>
+        {% endfor %}
+    </ul>
 
 </body>
-</html>
