@@ -2,56 +2,47 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inscripción</title>
+    <title>Inscripcion - Portal Clase 1114</title>
 </head>
 <body>
-
+    <!-- MENU -->
     <nav>
-        <a href="/">Inicio</a>
-        <a href="/informacion">Información</a>
-        <a href="/recursos">Recursos</a>
-        <a href="/tareas">Tareas</a>
-     
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/informacion">Informacion</a></li>
+            <li><a href="/recursos">Recursos</a></li>
+            <li><a href="/tareas">Tareas</a></li>
+            <li><a href="/inscripcion">Inscripcion</a></li>
+        </ul>
     </nav>
 
-    <hr>
+    <h1>Inscripcion a la Clase</h1>
 
-    <h1>Inscripción a la Clase</h1>
-
+    <!-- Mostrar mensaje de exito o error -->
     {% if mensaje %}
-    <p style="color: green;">
-        {{ mensaje }}
-    </p>
+    <p style="color: green; font-weight: bold;">{{ mensaje }}</p>
     {% endif %}
 
+    <!-- El formulario -->
     <form method="POST">
-
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
-
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
         <br><br>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
-
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
         <br><br>
 
-        <label>Programa:</label>
-
-        <select name="programa" required>
-            <option value="">Seleccione</option>
+        <label for="programa">Programa:</label>
+        <select name="programa" id="programa" required>
+            <option value="">-- Selecciona --</option>
             <option value="Sistemas">Sistemas</option>
-            <option value="Ingenierias">Ingenierías</option>
+            <option value="Ingenierias">Ingenierias</option>
             <option value="Otro">Otro</option>
         </select>
-
         <br><br>
 
-        <button type="submit">
-            Inscribirse
-        </button>
-
+        <button type="submit">Inscribirse</button>
     </form>
-
 </body>
 </html>

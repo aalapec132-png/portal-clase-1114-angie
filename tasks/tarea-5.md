@@ -159,8 +159,22 @@ if request.method == "POST":
 ## Preguntas de reflexion
 
 1. ¿Que diferencia hay entre `<input type="text">` y `<input type="email">`?
+
+respuesta:
+
+El campo <input type="text"> permite que el usuario escriba cualquier tipo de texto, sin restricción de formato. Por otro lado, <input type="email"> está diseñado específicamente para direcciones de correo electrónico y el navegador verifica automáticamente que el texto ingresado tenga el formato correcto, como usuario@dominio.com. Esto ayuda a asegurar que los datos ingresados sean un email válido.
+
 2. ¿Que hace el atributo `required` en un campo?
+
+respuesta:
+
+El atributo required indica que el campo es obligatorio. Si el usuario intenta enviar el formulario sin completar ese campo, el navegador bloquea el envío y muestra un mensaje de error. Esto asegura que todos los campos importantes se llenen antes de procesar los datos
+
 3. Si un usuario completa el formulario, ¿donde se guardan esos datos ahora?
+
+respuesta:
+
+Actualmente, los datos no se guardan en ninguna base de datos ni archivo. Solo se reciben temporalmente en el servidor a través de Flask para mostrar un mensaje de éxito en la página. Si la página se recarga, esos datos se pierden. Guardarlos en un lugar permanente será parte de la siguiente tarea.
 
 ## Entregable
 

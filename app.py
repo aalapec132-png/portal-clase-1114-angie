@@ -22,6 +22,7 @@ enlaces = [
     {"nombre": "MDN - HTML y CSS", "url": "https://developer.mozilla.org"}
 ]
 
+
 @app.route("/")
 def inicio():
     return render_template("index.html")
@@ -50,21 +51,21 @@ def tareas_pagina():
 @app.route("/inscripcion", methods=["GET", "POST"])
 def inscripcion():
     mensaje = None
-
+    
     if request.method == "POST":
+        # El usuario envio el formulario
         nombre = request.form.get("nombre")
         email = request.form.get("email")
         programa = request.form.get("programa")
-
+        
+        # Validacion basica
         if nombre and email and programa:
             mensaje = f"Bienvenido {nombre}! Te hemos registrado."
         else:
             mensaje = "Por favor completa todos los campos."
+    
+    return render_template("inscripcion.html", mensaje=mensaje)
 
-    return render_template(
-        "inscripcion.html",
-        mensaje=mensaje
-    )
 
 if __name__ == "__main__":
     app.run(debug=True)
