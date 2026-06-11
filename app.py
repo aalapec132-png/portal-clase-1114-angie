@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+# CONFIGURACIÓN BD
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portal.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 # Datos de la clase
 objetivos = [
@@ -22,49 +29,63 @@ enlaces = [
     {"nombre": "MDN - HTML y CSS", "url": "https://developer.mozilla.org"}
 ]
 
+# MODELO
+class Estudiante(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    programa = db.Column(db.String(50), nullable=False)
+    fecha_inscripcion = db.Column(db.DateTime, default=db.func.now())
 
+# RUTAS
 @app.route("/")
 def inicio():
     return render_template("index.html")
 
 @app.route("/informacion")
 def informacion():
-    return render_template(
-        "informacion.html",
-        objetivos=objetivos
-    )
+    return render_template("informacion.html", objetivos=objetivos)
 
 @app.route("/recursos")
 def recursos():
-    return render_template(
-        "recursos.html",
-        enlaces=enlaces
-    )
+    return render_template("recursos.html", enlaces=enlaces)
 
 @app.route("/tareas")
 def tareas_pagina():
-    return render_template(
-        "tareas.html",
-        tareas=tareas
-    )
+    return render_template("tareas.html", tareas=tareas)
 
 @app.route("/inscripcion", methods=["GET", "POST"])
 def inscripcion():
     mensaje = None
-    
+
     if request.method == "POST":
-        # El usuario envio el formulario
         nombre = request.form.get("nombre")
         email = request.form.get("email")
         programa = request.form.get("programa")
-        
-        # Validacion basica
-        if nombre and email and programa:
-            mensaje = f"Bienvenido {nombre}! Te hemos registrado."
-        else:
+
+        if not nombre or not email or not programa:
             mensaje = "Por favor completa todos los campos."
-    
+        else:
+            try:
+                nuevo = Estudiante(
+                    nombre=nombre,
+                    email=email,
+                    programa=programa
+                )
+                db.session.add(nuevo)
+                db.session.commit()
+                mensaje = f"Bienvenido {nombre}! Te hemos registrado."
+            except:
+                db.session.rollback()
+                mensaje = "Error: este email ya está registrado."
+
     return render_template("inscripcion.html", mensaje=mensaje)
+
+
+@app.route("/estudiantes")
+def estudiantes():
+    lista = Estudiante.query.all()
+    return render_template("estudiantes.html", estudiantes=lista)
 
 
 if __name__ == "__main__":
