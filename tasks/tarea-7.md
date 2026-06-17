@@ -305,8 +305,24 @@ if 'usuario_id' not in session:
 ## Preguntas de reflexion
 
 1. ¿Por que nunca debes guardar contraseñas en texto plano?
+
+respuesta:
+
+Nunca se deben guardar las contraseñas en texto plano porque cualquier persona que tenga acceso a la base de datos podría verlas y robar la información de los usuarios. Por eso se utilizan contraseñas encriptadas para mayor seguridad.
+
 2. ¿Que diferencia hay entre crear un Usuario y loguear?
+
+respuesta:
+
+Crear un usuario significa registrarlo y guardar sus datos en la base de datos. En cambio, iniciar sesión (loguear) consiste en verificar que el usuario y la contraseña sean correctos para permitirle acceder al sistema.
+
+
 3. ¿Como protegeria la ruta `/estudiantes` para que solo profesor pueda verla?
+
+respuesta:
+
+La ruta /estudiantes se puede proteger comprobando si existe una sesión activa y si el rol del usuario es "profesor". Si no cumple esas condiciones, se redirige a la página de inicio de sesión para impedir el acceso.
+
 
 ## Entregable
 
